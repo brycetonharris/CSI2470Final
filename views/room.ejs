@@ -9,6 +9,8 @@
         const ROOM_ID = "<%= roomId %>";
         const USER_ID = String(Math.floor(Math.random() * 100000)); // or use uuid if client-side uuid lib is available
     </script>
+
+    <script defer src=" https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
     
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="script.js" defer></script>
