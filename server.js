@@ -18,9 +18,22 @@ app.get('/:room', (req, res) => {
 io.on('connection', socket => {
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId)
-        socket.to(roomId).broadcast.emit('user-connected', userId)
+
+        // Store user details on socket
+        socket.roomId = roomId
+        socket.userId = userId
+
+        // Broadcast to other clients in room
+        socket.to(roomId).emit('user-connected', userId)
+    })
+
+    socket.on('disconnect', () => {
+        if (socket.roomId && socket.userId) {
+            socket.to(socket.roomId).emit('user-disconnected', socket.userId)
+        }
     })
 })
+
 
 
 

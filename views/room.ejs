@@ -6,8 +6,10 @@
     initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
-        const ROOM_ID = "<%= roomId %>"
+        const ROOM_ID = "<%= roomId %>";
+        const USER_ID = String(Math.floor(Math.random() * 100000)); // or use uuid if client-side uuid lib is available
     </script>
+    
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="script.js" defer></script>
 
